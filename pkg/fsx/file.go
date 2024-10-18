@@ -20,6 +20,8 @@ type File interface {
 	io.Writer
 	io.Closer
 	io.Seeker
+
+	Truncate(size int64) error
 }
 
 // Entry is a universal struct with multiple purposes.
