@@ -14,15 +14,15 @@ import (
 )
 
 // Dir is a wrapper around go-fuse's Inode struct,
-// which is the base struct for all file system nodes.
+// which is the base struct for all filesystem nodes.
 // Dir is used to provide a common implementation for all directory nodes
-// in the fuse file system.
+// in the fuse filesystem.
 type Dir struct {
-	// File system pointer to access top-level instances/methods.
+	// filesystem pointer to access top-level instances/methods.
 	fs *FS
 	// Current node inode number.
 	inode uint64
-	// Current node path in the file system.
+	// Current node path in the filesystem.
 	path string
 	// Children directory entries.
 	children []libfuse.Dirent

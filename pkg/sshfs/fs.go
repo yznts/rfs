@@ -10,8 +10,7 @@ import (
 	"golang.org/x/crypto/ssh"
 )
 
-// FS is a wrapper around sftp.Client to implement
-// filesystem interfaces.
+// FS implements filesystem operations over sftp client.
 type FS struct {
 	*sftp.Client
 }
@@ -63,7 +62,8 @@ func (f *FS) ReadDir(name string) ([]fs.DirEntry, error) {
 	}), nil
 }
 
-func NewFS(client *ssh.Client) *FS {
+// New creates a new FS instance wrapping the given ssh client.
+func New(client *ssh.Client) *FS {
 	// Wrap ssh client into sftp client.
 	sftpc, err := sftp.NewClient(client)
 	if err != nil {

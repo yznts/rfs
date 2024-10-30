@@ -19,7 +19,7 @@ var (
 
 func TestFS(t *testing.T) {
 	// Get remote filesystem url.
-	url := errx.Must(url.Parse(os.Getenv("TEST_SSHFS")))
+	url := errx.Must(url.Parse(os.Getenv("TEST_SSHFS_DSN")))
 	// Get private key.
 	key := errx.Must(os.ReadFile(
 		logic.Or(os.Getenv("TEST_SSHFS_KEY"), os.Getenv("HOME")+"/.ssh/id_rsa"),

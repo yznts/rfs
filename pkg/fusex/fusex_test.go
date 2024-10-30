@@ -11,17 +11,17 @@ import (
 )
 
 func TestFusex(t *testing.T) {
-	// Use the ssh connection from testfs to initialize the file system.
-	_sshfs := sshfs.NewFS(testfs.REMOTE_SSHC)
+	// Use the ssh connection from testfs to initialize the filesystem.
+	_sshfs := sshfs.New(testfs.REMOTE_SSHC)
 	// Create a root fuse node using fusex.
 	root := fusex.NewFS(_sshfs)
-	// Mount the file system.
-	c, err := libfuse.Mount("/tmp/rfs", libfuse.FSName("rfs"), libfuse.Subtype("rfs"))
+	// Mount the filesystem.
+	c, err := libfuse.Mount("./tmp", libfuse.FSName("rfs"), libfuse.Subtype("rfs"))
 	if err != nil {
 		t.Fatal(err)
 	}
 	defer c.Close()
-	// Serve the file system.
+	// Serve the filesystem.
 	if err := libfs.Serve(c, root); err != nil {
 		t.Fatal(err)
 	}

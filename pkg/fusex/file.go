@@ -13,17 +13,17 @@ import (
 )
 
 // File is a wrapper around go-fuse's Inode struct,
-// which is the base struct for all file system nodes.
+// which is the base struct for all filesystem nodes.
 // File is used to provide a common implementation for all file nodes
-// in the fuse file system.
+// in the fuse filesystem.
 type File struct {
-	// File system pointer to access top-level instances/methods.
+	// filesystem pointer to access top-level instances/methods.
 	fs *FS
 	// Mutex to lock the file.
 	*sync.Mutex
 	// Current node inode number.
 	inode uint64
-	// Current node path in the file system.
+	// Current node path in the filesystem.
 	path string
 	// Current node file descriptor on open.
 	file fsx.File
